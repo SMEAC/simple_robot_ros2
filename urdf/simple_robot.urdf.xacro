@@ -44,7 +44,6 @@
             <geometry>
                 <sphere radius=".05" />
             </geometry>
-            <material name="green"/>
         </visual>
     </link>     
 
