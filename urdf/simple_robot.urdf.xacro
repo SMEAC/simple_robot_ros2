@@ -2,7 +2,7 @@
 <robot name="simple_robot" xmlns:xacro="http://www.ros.org/wiki/xacro"> 
 
     <!-- Start of Links - first link must be a non-inertial link -->
-    <link name='base_link'>
+    <link name="base_link">
     </link> 
 	
     <link name="chassis">
@@ -10,12 +10,12 @@
             <mass value="1"/>
             <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.002"/>
         </inertial>
-        <collision name='collision'>
+        <collision name="chassis">
             <geometry>
                 <box size=".4 .2 .1" />
             </geometry>
         </collision>
-        <visual name='visual'>
+        <visual name="chassis">
             <geometry>
                 <box size=".4 .2 .1" />
             </geometry>
@@ -27,18 +27,10 @@
             <mass value=".1"/>
             <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.002"/>
         </inertial>
-        <collision name='collision'>
+        <collision name="castor">
             <geometry>
                 <sphere radius=".05" />
             </geometry>
-            <surface>
-                <friction>
-                    <ode>
-                        <mu>0</mu>
-                        <mu2>0</mu2>
-                    </ode>
-                </friction>
-            </surface>
         </collision>              
         <visual name='visual'>
             <geometry>
@@ -53,12 +45,12 @@
             <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.002"/>
         </inertial>
         <pose>0.1 0.13 0.1 0 1.5707 1.5707</pose>
-        <collision name='collision'>
+        <collision name="left_wheel">
             <geometry>
                 <cylinder radius='.1' length='.05'/>
             </geometry>
         </collision>
-        <visual name='visual'>
+        <visual name="left_wheel">
             <geometry>
                 <cylinder radius='.1' length='.05'/>
             </geometry>               
@@ -71,12 +63,12 @@
             <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.002"/>
         </inertial>
         <pose>0.1 0.13 0.1 0 1.5707 1.5707</pose>
-        <collision name='collision'>
+        <collision name="right_wheel">
             <geometry>
                 <cylinder radius='.1' length='.05'/>
             </geometry>
         </collision>
-        <visual name='visual'>
+        <visual name="right_wheel">
             <geometry>
                 <cylinder radius='.1' length='.05'/>
             </geometry>         
@@ -164,21 +156,37 @@
 
   <gazebo reference="chassis">
   	<material>Gazebo/Green</material>
+    	<mu1>.01</mu1>
+    	<mu2>.01</mu2>  	
+        <fdir1>0.000000 0.000000 0.000000</fdir1>
+        <slip1>1.000000</slip1>
+        <slip2>1.000000</slip2>   	  
   </gazebo>  
   
   <gazebo reference="left_wheel">
-  	<material>Gazebo/Orange</material>
-    <mu1>1</mu1>
-    <mu2>1</mu2>
+    	<material>Gazebo/Orange</material>
+    	<mu1>100000</mu1>
+    	<mu2>100000</mu2>
+        <fdir1>0.000000 0.000000 0.000000</fdir1>
+        <slip1>0.000000</slip1>
+        <slip2>0.000000</slip2>    
   </gazebo>  
-  
+
   <gazebo reference="right_wheel">
-  	<material>Gazebo/Orange</material>
-    <mu1>1</mu1>
-    <mu2>1</mu2>  	
+    	<material>Gazebo/Orange</material>
+    	<mu1>100000</mu1>
+    	<mu2>100000</mu2>  	
+        <fdir1>0.000000 0.000000 0.000000</fdir1>
+        <slip1>0.000000</slip1>
+        <slip2>0.000000</slip2>    
   </gazebo>  
   <gazebo reference="castor">
   	<material>Gazebo/Blue</material>
+    	<mu1>.01</mu1>
+    	<mu2>.01</mu2>  	
+        <fdir1>0.000000 0.000000 0.000000</fdir1>
+        <slip1>1.000000</slip1>
+        <slip2>1.000000</slip2>     	
   </gazebo>  
 
 </robot>
